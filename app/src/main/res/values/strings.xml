@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Igbo Calender</string>
+    <string name="appwidget_text">8:28</string>
+    <string name="add_widget">Add widget</string>
+    <string name="add_widget_api21">
+        => Step 1: \tFind a blank space where you wish to place the widget\n\n
+        => Step 2: \tPress and hold on the blank space, then tap Widgets\n\n
+        => Step 3: \tSelect the widget MODERN IGBO CALENDER and press and hold its\n\n
+        => Step 4: \tRelease the widget in the free space\n\n\n
+
+        The widget is now displayed
+    </string>
+
+    <string name="add_widget_api19">
+        => Step 1: \tTouch and hold on an empty space on the Home screen\n\n
+        => Step 2: \tTouch the Widgets button at the bottom of the screen\n\n
+        => Step 3: \tTouch and hold on the widget MODERN IGBO CALENDER\n\n
+        => Step 4: \tPosition the widget on the screen and release it to add it to the Home screen\n\n
+        => Step 5: \tRelease the widget in the free space\n\n\n
+
+        If the widget is too large you will receive the following message:
+        "No more room on this page." The device will then attempt to place the widget on a
+        Home screen that has the necessary space.
+    </string>
+
+    <string name="add_widget_api16">
+        => Step 1: \tTouch the Apps icon\n\n
+        => Step 2: \tTouch the Widgets tab at the top of the screen\n\n
+        => Step 3: \tTouch and hold on the widget MODERN IGBO CALENDER\n\n
+        => Step 4: \tPosition the widget on the screen and release it to add it to the Home screen\n\n
+        => Step 5: \tRelease the widget in the free space\n\n\n
+
+        If the widget is too large you will receive the following message:
+        "No more room on this page." The device will then attempt to place the widget on a
+        Home screen that has the necessary space.
+    </string>
+</resources>

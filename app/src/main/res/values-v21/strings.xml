@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string name="add_widget_instruction">
+        => Step 1: \tFind a blank space where you wish to place the widget\n\n
+        => Step 2: \tPress and hold on the blank space, then tap Widgets\n\n
+        => Step 3: \tSelect the widget MODERN IGBO CALENDER and press and hold its\n\n
+        => Step 4: \tRelease the widget in the free space\n\n\n
+
+        The widget is now displayed
+    </string>
+</resources>

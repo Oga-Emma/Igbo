@@ -1,4 +1,4 @@
-package com.example.seven.igbocalender;
+package com.example.seven.igbocalender.model;
 
 /**
  * Created by seven on 1/8/18.

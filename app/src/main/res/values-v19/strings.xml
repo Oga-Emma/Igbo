@@ -1,11 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Igbo Calender</string>
-    <string name="appwidget_text">8:28</string>
-    <string name="add_widget">Add widget</string>
 
     <string name="add_widget_instruction">
-        => Step 1: \tTouch the Apps icon\n\n
-        => Step 2: \tTouch the Widgets tab at the top of the screen\n\n
+        => Step 1: \tTouch and hold on an empty space on the Home screen\n\n
+        => Step 2: \tTouch the Widgets button at the bottom of the screen\n\n
         => Step 3: \tTouch and hold on the widget MODERN IGBO CALENDER\n\n
         => Step 4: \tPosition the widget on the screen and release it to add it to the Home screen\n\n
         => Step 5: \tRelease the widget in the free space\n\n\n

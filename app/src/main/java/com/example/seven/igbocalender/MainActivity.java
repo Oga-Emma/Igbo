@@ -2,50 +2,81 @@ package com.example.seven.igbocalender;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.seven.igbocalender.bigWidget.BigClockWidget;
+import com.example.seven.igbocalender.model.DateData;
+import com.example.seven.igbocalender.repositoory.DataStore;
+import com.example.seven.igbocalender.utility.AddWidgetDialog;
+import com.example.seven.igbocalender.utility.Utils;
+
+import org.joda.time.LocalDate;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+
+    final DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd yyyy");
+    final DateFormat hour = new SimpleDateFormat("a");
+    TextView time, timeOfDay, dateText, igbo1, igbo2;
+    ImageView moonImage;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int ids[] = AppWidgetManager.getInstance(this).getAppWidgetIds(new ComponentName(this,ClockWidget.class));
+        dateText = findViewById(R.id.date_text_view);
+        igbo1 = findViewById(R.id.igbo1_text_view);
+        igbo2 = findViewById(R.id.igbo2_text_view);
+        moonImage = findViewById(R.id.moon_image_view);
 
-//        Toast.makeText(this, "Number of widgets: "+ids.length, Toast.LENGTH_LONG).show();
+        final int ids[] = AppWidgetManager.getInstance(MainActivity.this)
+                .getAppWidgetIds(new ComponentName(MainActivity.this, BigClockWidget.class));
 
-        if(ids.length < 1){
-            AddWidgetDialog dialog = new AddWidgetDialog();
-            dialog.show(getSupportFragmentManager(), "Add Widget");
+        final DateData data = DataStore.getData(LocalDate.now());
+
+        if (data != null) {
+            if (ids.length < 1) {
+                AddWidgetDialog dialog = new AddWidgetDialog();
+                dialog.show(getSupportFragmentManager(), "Add Widget");
+            }
+
+            Date date = new Date();
+
+            dateText.setText(dateFormat.format(date));
+
+            igbo1.setText(data.getOnwa_izu_asaa());
+
+            String marketDay = data.getTrad_week() + ", " + data.getTrad_day()
+                    + " " + data.getTrad_month();
+
+            igbo2.setText(marketDay);
+
+            moonImage.setImageResource(Utils.getMoonImageResource(data.getTrad_day()));
+
         }
+    }
 
-        DateFormat df = new SimpleDateFormat("hh:mm");
-        DateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM dd yyyy");
-        DateFormat hour = new SimpleDateFormat("a");
 
-        Date date = new Date();
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        TextView time = findViewById(R.id.time_text_view);
-        TextView timeOfDay = findViewById(R.id.time_of_day_text_view);
-        TextView dateText = findViewById(R.id.date_text_view);
-        TextView igbo1 = findViewById(R.id.igbo1_text_view);
-        TextView igbo2 = findViewById(R.id.igbo2_text_view);
-
-        time.setText(df.format(date));
-        timeOfDay.setText(hour.format(date));
-        dateText.setText(dateFormat.format(date));
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
 }

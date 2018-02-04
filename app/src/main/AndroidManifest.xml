@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.seven.igbocalender">
+    package="com.example.seven.igbocalender"
+    android:installLocation="internalOnly">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,29 +21,33 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.example.seven.igbocalender.ClockWidget">
+        <receiver android:name=".bigWidget.BigClockWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/big_clock_widget_info" />
+        </receiver>
+        <receiver android:name=".bigWidget.BigClockWidgetBroadcast">
+        </receiver>
+
+
+        <receiver android:name=".smallWidget.NewAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <!--<intent-filter>-->
-                <!--<action android:name="com.eightbitcloud.example.widget.8BITCLOCK_WIDGET_UPDATE" />-->
-            <!--</intent-filter>-->
-
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/clock_widget_info" />
+                android:resource="@xml/small_clock_widget_info" />
         </receiver>
-
-        <receiver android:name=".WidgetBroadcast" />
-        <receiver android:name=".TimeChangedBroadcast">
-            <intent-filter>
-                <action android:name="android.intent.action.TIME_SET" />
-                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-                <action android:name="android.intent.action.DATE_CHANGED" />
-            </intent-filter>
-        </receiver>
-
     </application>
 
 </manifest>
